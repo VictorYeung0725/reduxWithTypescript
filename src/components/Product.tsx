@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { addToCard } from '../store/cart-slice';
 
 type ProductProps = {
   id: string;
@@ -9,16 +10,17 @@ type ProductProps = {
 };
 
 export default function Product({
+  id,
   image,
   title,
   price,
   description,
 }: ProductProps) {
   const dispatch = useDispatch();
-  const id = useSelector((state:) => {
-    state.items.id;
-  });
-  function handleAddToCart() {}
+
+  function handleAddToCart() {
+    dispatch(addToCard({ id, title, price }));
+  }
 
   return (
     <article className='product'>

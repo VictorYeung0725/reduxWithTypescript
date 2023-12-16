@@ -1,10 +1,15 @@
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+  type TypedUseSelectorHook,
+} from 'react-redux';
 
-import { AppDispatch } from './store';
+import { AppDispatch, RootState } from './store';
 
 // declared a type
 //and this type retrived from the store.
 type DispatchFunction = () => AppDispatch;
 
-//review this one more time
-const useCartDispatch: DispatchFunction = useDispatch;
+//create ourself standalone type and trtived from the store
+export const useCartDispatch: DispatchFunction = useDispatch;
+export const useCartSelector: TypedUseSelectorHook<RootState> = useSelector;
